@@ -29,6 +29,7 @@ public class ConnectionController extends Thread {
             DataInputStream dataInputStream = new DataInputStream(is);
             while (true) {
                 String operation = dataInputStream.readUTF();
+                System.out.println("客户端[" + socket.getRemoteSocketAddress() + "]输入命令：" + operation);
                 if ("ls".equals(operation)) {
                     listFiles(dataoutputStream);
                 } else if (operation.startsWith("cd") && operation.length() > 3) {
